@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/creeps/basic/BasicCreep.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://scenes/AI/FiniteStateMachine.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/creeps/basic/StateSearch.gd" type="Script" id=4]
+[ext_resource path="res://scenes/creeps/basic/StateGoto.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31.8248, 31.7413 )
+
+[node name="BasicCreep" type="KinematicBody2D" groups=[
+"Creep",
+]]
+pause_mode = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Brain" parent="." instance=ExtResource( 3 )]
+
+[node name="StateSearch" type="Node" parent="." groups=[
+"State",
+]]
+script = ExtResource( 4 )
+
+[node name="StateGoto" type="Node" parent="." groups=[
+"State",
+]]
+script = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 47.0
+margin_top = -20.0
+margin_right = 93.0
+align = 1
+valign = 1
