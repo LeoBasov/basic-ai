@@ -33,6 +33,20 @@ Create a subset of the actions excluding the removeMe one. Creates a new set.
 func actionSubset(actions : Array, removeMe : GoapAction) -> Array:
 	#FILL IN FUNCTION
 	return []
+	
+"""
+Check that all items in 'test' are in 'state'. If just one does not match or is not there
+then this returns false.
+"""
+func inState(test : Dictionary, state : Dictionary) -> bool:
+	#FILL IN FUNCTION
+	return false
+	
+"""
+Apply the stateChange to the currentState
+"""
+func populateState(currentState : Dictionary, stateChange : Dictionary) -> Dictionary:
+	return {}
 
 """
 private class Node {
