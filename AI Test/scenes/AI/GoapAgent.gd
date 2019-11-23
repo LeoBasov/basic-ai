@@ -8,7 +8,7 @@ var current_actions : Array
 var data_provider : IGoap
 var planner : GoapPlaner
 
-func ready():
+func _ready():
 	available_actions = []
 	current_actions = []
 	planner = GoapPlaner.new()
@@ -19,20 +19,11 @@ func ready():
 	#stateMachine.pushState (idleState);
 	#loadActions ();
 	
-func update():
+func update() -> void:
 	$FiniteStateMachine.update()
-
-"""
-	void Update () {
-		stateMachine.Update (this.gameObject);
-	}
-"""
-
-"""
-	public void addAction(GoapAction a) {
-		availableActions.Add (a);
-	}
-"""
+	
+func add_action(action : GoapAction) -> void:
+	available_actions.push_back(action)
 
 """
 	public GoapAction getAction(Type action) {
@@ -44,17 +35,14 @@ func update():
 	}
 """
 
-"""
-	public void removeAction(GoapAction action) {
-		availableActions.Remove (action);
-	}
-"""
+func remove_action(action : GoapAction) -> void:
+	for i in available_actions.size():
+		if available_actions[i] == action:
+			available_actions.remove(i)
+			break
 
-"""
-	private bool hasActionPlan() {
-		return currentActions.Count > 0;
-	}
-"""
+func has_action_plan() -> bool:
+	return current_actions.size() > 0
 
 """
 	private void createIdleState() {
