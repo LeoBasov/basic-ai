@@ -18,7 +18,7 @@ sequence.
 
 parent : Node new type defined at the buttom of the class
 """
-func buildGraph (parent, leaves : Array, usableActions : Array, goal : Dictionary) -> bool:
+func buildGraph (parent : GoapPlanerNode, leaves : Array, usableActions : Array, goal : Dictionary) -> bool:
 	#FILL IN FUNCTION
 	return false
 	
@@ -42,19 +42,3 @@ Apply the stateChange to the currentState
 """
 func populateState(currentState : Dictionary, stateChange : Dictionary) -> Dictionary:
 	return {}
-
-"""
-private class Node {
-		public Node parent;
-		public float runningCost;
-		public HashSet<KeyValuePair<string,object>> state;
-		public GoapAction action;
-
-		public Node(Node parent, float runningCost, HashSet<KeyValuePair<string,object>> state, GoapAction action) {
-			this.parent = parent;
-			this.runningCost = runningCost;
-			this.state = state;
-			this.action = action;
-		}
-	}
-"""
