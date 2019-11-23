@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "FiniteState",
 "language": "GDScript",
 "path": "res://scenes/AI/FiniteState.gd"
+}, {
+"base": "Node",
+"class": "GoapAction",
+"language": "GDScript",
+"path": "res://scenes/AI/GoapAction.gd"
 } ]
 _global_script_class_icons={
-"FiniteState": ""
+"FiniteState": "",
+"GoapAction": ""
 }
 
 [application]
