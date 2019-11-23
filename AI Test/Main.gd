@@ -2,12 +2,14 @@ extends Node
 
 var Food = preload("res://scenes/food/Food.tscn")
 var Creep = preload("res://scenes/creeps/basic/BasicCreep.tscn")
+var AdvancedCreep = preload("res://scenes/creeps/goap/AdvancedCreep.tscn")
 
 func _ready():
 	get_tree().paused = true
 	
 	create_creep(Vector2(100, 100))
 	create_creep(Vector2(1000, 100))
+	create_advanced_creep(Vector2(500, 100))
 
 func create_food(position):
 	var food = Food.instance()
@@ -17,6 +19,11 @@ func create_food(position):
 	
 func create_creep(position):
 	var creep = Creep.instance()
+	creep.position = position
+	add_child(creep)
+	
+func create_advanced_creep(position):
+	var creep = AdvancedCreep.instance()
 	creep.position = position
 	add_child(creep)
 	
