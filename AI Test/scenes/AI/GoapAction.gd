@@ -27,7 +27,7 @@ func is_done() -> bool:
 Procedurally check if this action can run. Not all actions
 will need this, but some might.
 """
-func checkProceduralPrecondition(agent) -> bool: # agent : GameObject
+func check_procedural_precondition(agent) -> bool: # agent : GameObject
 	#OVERRIDE THIS
 	return false
 	
@@ -45,7 +45,7 @@ func perform(agent) -> bool:  # agent : GameObject
 Does this action need to be within range of a target game object?
 If not then the moveTo state will not need to run for this action.
 """
-func requiresInRange () -> bool:
+func requires_in_range () -> bool:
 	#OVERRIDE THIS
 	return false
 	
@@ -53,7 +53,7 @@ func requiresInRange () -> bool:
 Are we in range of the target?
 The MoveTo state will set this and it gets reset each time this action is performed.
 """
-func isInRange () -> bool:
+func is_in_range () -> bool:
 	return in_range
 	
 func set_in_range(in_range: bool) -> void:
