@@ -20,14 +20,26 @@ _global_script_classes=[ {
 "path": "res://scenes/AI/GoapAction.gd"
 }, {
 "base": "Node",
+"class": "GoapPlaner",
+"language": "GDScript",
+"path": "res://scenes/AI/GoapPlaner.gd"
+}, {
+"base": "Node",
 "class": "GoapPlanerNode",
 "language": "GDScript",
 "path": "res://scenes/AI/GoapPlanerNode.gd"
+}, {
+"base": "Node",
+"class": "IGoap",
+"language": "GDScript",
+"path": "res://scenes/AI/IGoap.gd"
 } ]
 _global_script_class_icons={
 "FiniteState": "",
 "GoapAction": "",
-"GoapPlanerNode": ""
+"GoapPlaner": "",
+"GoapPlanerNode": "",
+"IGoap": ""
 }
 
 [application]

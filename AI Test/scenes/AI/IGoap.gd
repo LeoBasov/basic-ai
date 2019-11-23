@@ -1,5 +1,7 @@
 extends Node
 
+class_name IGoap
+
 """
  * Collect the world data for this Agent that will be
  * used for GOAP planning.
