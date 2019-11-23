@@ -1,11 +1,6 @@
 extends Node
 
 """
-In node class Node. This needs another name.
-Used for building up the graph and holding the running costs of actions.
-"""
-
-"""
 Plan what sequence of actions can fulfill the goal.
 Returns null if a plan could not be found, or a list of the actions
 that must be performed, in order, to fulfill the goal.

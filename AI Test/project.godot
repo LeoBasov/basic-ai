@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "GoapAction",
 "language": "GDScript",
 "path": "res://scenes/AI/GoapAction.gd"
+}, {
+"base": "Node",
+"class": "GoapPlanerNode",
+"language": "GDScript",
+"path": "res://scenes/AI/GoapPlanerNode.gd"
 } ]
 _global_script_class_icons={
 "FiniteState": "",
-"GoapAction": ""
+"GoapAction": "",
+"GoapPlanerNode": ""
 }
 
 [application]
