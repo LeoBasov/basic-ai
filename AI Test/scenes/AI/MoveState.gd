@@ -6,7 +6,7 @@ func update(object):
 	
 	var action : GoapAction = current_actions.back()
 	
-	if action.requires_in_range() and action.target == null:
+	if action.requires_in_range() and (action.target == null or !action.target.get_ref()):
 		emit_signal("pop")
 		emit_signal("pop")
 		emit_signal("push", "IdleState")

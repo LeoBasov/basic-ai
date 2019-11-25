@@ -10,7 +10,10 @@ func get_world_state() -> Dictionary:
 func move_agent(next_action : GoapAction) -> bool:
 
 	
-	if !next_action.target.get_ref() or (next_action.target.get_ref().position - game_object.position).length() < 10.0:
+	if !next_action.target.get_ref():
+		next_action.in_range = false
+		return true
+	elif (next_action.target.get_ref().position - game_object.position).length() < 10.0:
 		next_action.in_range = true
 		return true
 	
