@@ -30,7 +30,7 @@ func update(object):
 		else:
 			# we need to move there first
 			# push moveTo state
-			emit_signal("push", "MoveToState")
+			emit_signal("push", "MoveState")
 
 	else:
 		# no actions left, move to Plan state
