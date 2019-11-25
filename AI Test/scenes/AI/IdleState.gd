@@ -1,27 +1,26 @@
 extends "res://scenes/AI/FiniteState.gd"
 
-var plan_exists : bool
-
-signal make_plan()
-signal plan_failed()
-
-func _ready():
-	self.plan_exists = false
-
-func set_plan_exists(plan_exists : bool) -> void:
-	self.plan_exists = plan_exists
+var data_provider : IGoap
 
 func update(object) -> void:
-	# Plan
-	emit_signal("make_plan")
+	data_provider = object.get_node("GoapAgent/IGoap")
 	
-	if self.plan_exists:
+	# get the world state and the goal we want to plan for
+	var world_state = data_provider.get_world_state()
+	var goal = data_provider.create_goal_state()
+	
+	# Plan
+	var plan = $GoapPlaner.plan(data_provider.game_object, object.get_node("GoapAgent").available_actions, world_state, goal)
+	
+	if plan.size() != 0:
 		# we have a plan, hooray!
+		object.get_node("GoapAgent").current_actions = plan
+		data_provider.planFound(goal, plan)
 		emit_signal("pop") #move to PerformAction state
 		emit_signal("push", "PerformActionState")
 
 	else:
 		# ugh, we couldn't get a plan
-		emit_signal("plan_failed")
+		data_provider.plan_failed(goal)
 		emit_signal("pop") # move back to IdleAction state
 		emit_signal("push","IdleState")

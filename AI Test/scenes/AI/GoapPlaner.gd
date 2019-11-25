@@ -8,7 +8,7 @@ Returns null if a plan could not be found, or a list of the actions
 that must be performed, in order, to fulfill the goal.
 Returns list of GoapActions
 """
-func plan(agent, availableActions : Dictionary,  worldState : Dictionary, goal : Dictionary) -> Array:
+func plan(agent, availableActions : Array,  worldState : Dictionary, goal : Dictionary) -> Array:
 	#FILL IN FUNCTION
 	return []
 	
