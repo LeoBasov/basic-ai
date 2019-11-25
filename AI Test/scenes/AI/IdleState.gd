@@ -6,9 +6,10 @@ func update(object) -> void:
 	# get the world state and the goal we want to plan for
 	var world_state = data_provider.get_world_state()
 	var goal = data_provider.create_goal_state()
+	var available_actions = object.get_node("GoapAgent").available_actions
 	
 	# Plan
-	var plan = $GoapPlaner.plan(data_provider.game_object, object.get_node("GoapAgent").available_actions, world_state, goal)
+	var plan = $GoapPlaner.plan(data_provider.game_object, available_actions, world_state, goal)
 	
 	if plan.size() != 0:
 		# we have a plan, hooray!
