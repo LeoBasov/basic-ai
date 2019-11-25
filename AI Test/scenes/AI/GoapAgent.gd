@@ -2,17 +2,21 @@ extends Node
 
 var available_actions : Array
 var current_actions : Array
+var data_provider : IGoap
 
 func _ready():
 	available_actions = []
 	current_actions = []
-	#planner = GoapPlaner.new()
-	#findDataProvider ();
-	#createIdleState ();
-	#createMoveToState ();
-	#createPerformActionState ();
-	#stateMachine.pushState (idleState);
-	#loadActions ();
+	find_data_provider()
+	$FiniteStateMachine.push_state($FiniteStateMachine/IdleState)
+	load_actions()
+	
+func find_data_provider():
+	data_provider = $IGoap
+	
+func load_actions() -> void:
+	#implement this
+	pass
 	
 func update() -> void:
 	$FiniteStateMachine.update($IGoap.game_object)
@@ -28,7 +32,3 @@ func remove_action(action : GoapAction) -> void:
 
 func has_action_plan() -> bool:
 	return current_actions.size() > 0
-
-func load_actions() -> void:
-	#implement this
-	pass
