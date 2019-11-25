@@ -128,4 +128,12 @@ func in_state(test : Dictionary, state : Dictionary) -> bool:
 Apply the stateChange to the currentState
 """
 func populate_state(currentState : Dictionary, stateChange : Dictionary) -> Dictionary:
-	return {}
+	var state : Dictionary = {}
+	# copy the KVPs over as new objects
+	for s in currentState:
+		state[s.Key] = s.Value
+
+	for  change in stateChange:
+		state[change.Key] = change.Value
+
+	return state;
