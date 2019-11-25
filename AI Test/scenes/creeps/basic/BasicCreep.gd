@@ -3,7 +3,6 @@ extends KinematicBody2D
 const SPEED = 5.0
 
 var velocity : Vector2
-var states : Dictionary
 var found_food
 
 func _process(delta):
@@ -11,11 +10,9 @@ func _process(delta):
 
 func _ready():
 	velocity = Vector2(0.0, 0.0)
-	states = {}
 	found_food = null
 	
 	for state in get_tree().get_nodes_in_group("State"):
-		states[state.name] = state
 		state.connect("pop", self, "_on_State_pop")
 		state.connect("push", self, "_on_State_push")
 		state.connect("pop_push", self, "_on_State_pop_push")
