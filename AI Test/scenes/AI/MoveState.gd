@@ -12,5 +12,7 @@ func update(object):
 		emit_signal("push", "IdleState")
 		return
 	
-	if data_provider.moveAgent(action) :
+	if data_provider.move_agent(action):
 		emit_signal("pop")
+	else:
+		pass
