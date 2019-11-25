@@ -8,8 +8,6 @@ func get_world_state() -> Dictionary:
 	return goal
 	
 func move_agent(next_action : GoapAction) -> bool:
-
-	
 	if !next_action.target.get_ref():
 		next_action.in_range = false
 		return true
@@ -20,5 +18,6 @@ func move_agent(next_action : GoapAction) -> bool:
 	var vec = next_action.target.get_ref().position - game_object.position
 	var velocity = vec.normalized()*game_object.SPEED
 	game_object.move_and_collide(velocity)
+	game_object.rotation = velocity.angle()
 	
 	return false
