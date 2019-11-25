@@ -1,9 +1,15 @@
 extends "res://scenes/AI/FiniteState.gd"
 
-var data_provider
-var current_actions
+var data_provider : IGoap
+var current_actions : Array
+
+func _ready():
+	pass
 
 func update(object):
+	data_provider = object.get_node("GoapAgent/IGoap")
+	current_actions = object.get_node("GoapAgent").current_actions
+	
 	var action : GoapAction = current_actions.back()
 	
 	if action.isDone():
