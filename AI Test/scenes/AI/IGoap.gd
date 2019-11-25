@@ -20,6 +20,15 @@ class_name IGoap
 	 * The starting state of the Agent and the world.
 	 * Supply what states are needed for actions to run.
 """
+
+var game_object
+
+func _ready():
+	game_object = null
+	
+func set_game_object(game_object) -> void:
+	self.game_object = game_object
+
 func get_world_state() -> Dictionary:
 	#OVERRIDE THIS
 	return {}
