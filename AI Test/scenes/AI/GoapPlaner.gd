@@ -70,8 +70,30 @@ sequence.
 parent : Node new type defined at the buttom of the class
 """
 func build_graph (parent : GoapPlanerNode, leaves : Array, usableActions : Array, goal : Dictionary) -> bool:
-	#FILL IN FUNCTION
-	return false
+	var found_one : bool = false
+	
+	# go through each action available at this node and see if we can use it here
+	for action in usableActions:
+		# if the parent state has the conditions for this action's preconditions, we can use it here
+		if in_state(action.Preconditions, parent.state):
+
+			# apply the action's effects to the parent state
+			var currentState : Dictionary = populate_state (parent.state, action.Effects);
+			#Debug.Log(GoapAgent.prettyPrint(currentState));
+			var node : GoapPlanerNode = GoapPlanerNode.new(parent, parent.runningCost+action.cost, currentState, action);
+
+			if in_state(goal, currentState):
+				# we found a solution!
+				leaves.push_back(node)
+				found_one = true;
+			else:
+				# not at a solution yet, so test all the remaining actions and branch out the tree
+				var subset : Array = action_subset(usableActions, action)
+				var found : bool = build_graph(node, leaves, subset, goal)
+				if found:
+					found_one = true
+
+	return found_one
 	
 """
 Create a subset of the actions excluding the removeMe one. Creates a new set.
