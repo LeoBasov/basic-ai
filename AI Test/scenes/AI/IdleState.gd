@@ -1,24 +1,24 @@
 extends "res://scenes/AI/FiniteState.gd"
 
-var plan : Array
+var plan_exists : bool
 
-signal get_plan()
+signal make_plan()
 signal plan_failed()
 
 func _ready():
-	plan = []
+	self.plan_exists = false
 
-func set_plan(plan : Array):
-	self.plan = plan
+func set_plan_exists(plan_exists : bool) -> void:
+	self.plan_exists = plan_exists
 
-func update(object):
+func update(object) -> void:
 	# Plan
-	emit_signal("get_plan")
+	emit_signal("make_plan")
 	
-	if plan.size() != 0:
+	if self.plan_exists:
 		# we have a plan, hooray!
 		emit_signal("pop") #move to PerformAction state
-		emit_signal("push", "performActionState")
+		emit_signal("push", "PerformActionState")
 
 	else:
 		# ugh, we couldn't get a plan

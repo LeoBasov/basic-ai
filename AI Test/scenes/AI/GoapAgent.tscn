@@ -22,4 +22,6 @@ script = ExtResource( 4 )
 script = ExtResource( 5 )
 
 [node name="GoapPlaner" parent="." instance=ExtResource( 6 )]
+[connection signal="make_plan" from="FiniteStateMachine/IdleState" to="." method="_on_IdleState_make_plan"]
+[connection signal="plan_failed" from="FiniteStateMachine/IdleState" to="." method="_on_IdleState_plan_failed"]
 [connection signal="get_current_action" from="FiniteStateMachine/MoveState" to="." method="_on_MoveState_get_current_action"]

@@ -35,3 +35,13 @@ func has_action_plan() -> bool:
 
 func _on_MoveState_get_current_action():
 	$FiniteStateMachine/MoveState.set_current_action(current_actions.back())
+
+
+func _on_IdleState_make_plan():
+	#make the actual plan
+	#check if plan could be created
+	$FiniteStateMachine/IdleState.set_plan_exists(true)
+
+
+func _on_IdleState_plan_failed():
+	pass # Replace with function body.
