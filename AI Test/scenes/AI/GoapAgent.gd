@@ -17,15 +17,3 @@ func load_actions() -> void:
 	
 func update() -> void:
 	$FiniteStateMachine.update($IGoap.game_object)
-	
-func add_action(action : GoapAction) -> void:
-	available_actions.push_back(action)
-
-func remove_action(action : GoapAction) -> void:
-	for i in available_actions.size():
-		if available_actions[i] == action:
-			available_actions.remove(i)
-			break
-
-func has_action_plan() -> bool:
-	return current_actions.size() > 0
