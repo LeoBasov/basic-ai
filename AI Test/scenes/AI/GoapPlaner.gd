@@ -18,7 +18,7 @@ func plan(agent, available_actions : Array,  world_state : Dictionary, goal : Di
 	
 	for action in available_actions:
 		if action.check_procedural_precondition(agent):
-			available_actions.push_back(action);
+			usableActions.push_back(action);
 			
 	# we now have all actions that can run, stored in usableActions
 
