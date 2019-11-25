@@ -15,7 +15,7 @@ func _ready():
 	#loadActions ();
 	
 func update() -> void:
-	$FiniteStateMachine.update()
+	$FiniteStateMachine.update($IGoap.game_object)
 	
 func add_action(action : GoapAction) -> void:
 	available_actions.push_back(action)
