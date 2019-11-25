@@ -33,15 +33,18 @@ func remove_action(action : GoapAction) -> void:
 func has_action_plan() -> bool:
 	return current_actions.size() > 0
 
-func _on_MoveState_get_current_action():
-	$FiniteStateMachine/MoveState.set_current_action(current_actions.back())
-
-
 func _on_IdleState_make_plan():
 	#make the actual plan
 	#check if plan could be created
-	$FiniteStateMachine/IdleState.set_plan_exists(true)
-
+	$FiniteStateMachine/IdleState.set_plan_exists(has_action_plan())
 
 func _on_IdleState_plan_failed():
+	pass # Replace with function body.
+
+
+func _on_MoveState_check_if_move_possible():
+	pass # Replace with function body.
+
+
+func _on_MoveState_move_agent():
 	pass # Replace with function body.

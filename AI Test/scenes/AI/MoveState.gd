@@ -1,29 +1,32 @@
 extends "res://scenes/AI/FiniteState.gd"
 
-var current_action : GoapAction
-var data_provider : IGoap
+var move_is_possible : bool
+var agent_moved : bool
 
-signal get_current_action()
+signal check_if_move_possible()
+signal move_agent()
 
 func _ready():
-	current_action = null
-	data_provider = null
+	self.move_is_possible = false
+	self.agent_moved = false
 	
-func st_data_provider(data_provider : IGoap) -> void:
-	self.data_provider = data_provider
+func set_move_is_possible(move_is_possible : bool) -> void:
+	self.move_is_possible = move_is_possible
 
-func set_current_action(current_action : GoapAction) -> void:
-	self.current_action = current_action
+func set_agent_moved(agent_moved : bool) -> void:
+	self.agent_moved = agent_moved
 
-func update(object):	
-	emit_signal("get_current_action")
+func update(object):
+	emit_signal("check_if_move_possible")
 	
-	if (current_action.requiresInRange() && current_action.target == null):
+	if !self.move_is_possible:
 		emit_signal("pop")
 		emit_signal("pop")
 		emit_signal("push", "IdleState")
 		return
 
 	#get the agent to move itself
-	if data_provider.moveAgent(current_action):
+	emit_signal("move_agent")
+	
+	if agent_moved:
 		emit_signal("pop")
