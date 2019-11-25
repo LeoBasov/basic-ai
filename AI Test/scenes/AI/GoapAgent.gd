@@ -7,16 +7,13 @@ var data_provider : IGoap
 func _ready():
 	available_actions = []
 	current_actions = []
-	find_data_provider()
+	data_provider = $IGoap
 	$FiniteStateMachine.push_state($FiniteStateMachine/IdleState)
 	load_actions()
 	
-func find_data_provider():
-	data_provider = $IGoap
-	
 func load_actions() -> void:
-	#implement this
-	pass
+	for action in get_tree().get_nodes_in_group("Actions"):
+		available_actions.push_back(action)
 	
 func update() -> void:
 	$FiniteStateMachine.update($IGoap.game_object)

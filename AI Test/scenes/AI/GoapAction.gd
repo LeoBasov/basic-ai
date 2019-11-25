@@ -10,6 +10,9 @@ var in_range : bool = false
 var cost : float = 1.0
 var target = null #GameObject the object on which the action is applied e.g. the enemy
 
+func _ready():
+	add_to_group("Actions")
+
 func do_reset() -> void:
 	in_range = false
 	target = null
