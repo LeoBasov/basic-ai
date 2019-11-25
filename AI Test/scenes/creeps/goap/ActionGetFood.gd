@@ -1,7 +1,15 @@
 extends "res://scenes/AI/GoapAction.gd"
 
+var is_done : bool
+
 func _ready():
+	is_done = false
 	add_effect("get_food", true)
+	
+func reset() -> void:
+	is_done = false
+	target = null
+	in_range = false
 
 func requires_in_range () -> bool:
 	return true
@@ -12,3 +20,10 @@ func check_procedural_precondition(agent) -> bool: # agent : GameObject
 		return true
 		
 	return false
+	
+func perform(agent) -> bool:  # agent : GameObject
+	return true
+		
+	
+func is_done() -> bool:
+	return is_done
