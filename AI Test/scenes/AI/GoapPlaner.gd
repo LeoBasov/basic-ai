@@ -99,8 +99,12 @@ func build_graph (parent : GoapPlanerNode, leaves : Array, usableActions : Array
 Create a subset of the actions excluding the removeMe one. Creates a new set.
 """
 func action_subset(actions : Array, removeMe : GoapAction) -> Array:
-	#FILL IN FUNCTION
-	return []
+	var subset : Array = []
+	for action in actions:
+		if !action.Equals(removeMe):
+			subset.push_back(action)
+			
+	return subset
 	
 """
 Check that all items in 'test' are in 'state'. If just one does not match or is not there
