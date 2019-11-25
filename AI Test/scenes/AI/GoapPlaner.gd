@@ -75,12 +75,12 @@ func build_graph (parent : GoapPlanerNode, leaves : Array, usableActions : Array
 	# go through each action available at this node and see if we can use it here
 	for action in usableActions:
 		# if the parent state has the conditions for this action's preconditions, we can use it here
-		if in_state(action.Preconditions, parent.state):
+		if in_state(action.preconditions, parent.state):
 
 			# apply the action's effects to the parent state
-			var currentState : Dictionary = populate_state (parent.state, action.Effects);
+			var currentState : Dictionary = populate_state (parent.state, action.effects);
 			#Debug.Log(GoapAgent.prettyPrint(currentState));
-			var node : GoapPlanerNode = GoapPlanerNode.new(parent, parent.runningCost+action.cost, currentState, action);
+			var node : GoapPlanerNode = GoapPlanerNode.new(parent, parent.running_cost + action.cost, currentState, action);
 
 			if in_state(goal, currentState):
 				# we found a solution!
@@ -129,11 +129,12 @@ Apply the stateChange to the currentState
 """
 func populate_state(currentState : Dictionary, stateChange : Dictionary) -> Dictionary:
 	var state : Dictionary = {}
+	
 	# copy the KVPs over as new objects
-	for s in currentState:
-		state[s.Key] = s.Value
+	for key in currentState:
+        state[key] = currentState[key]
 
-	for  change in stateChange:
-		state[change.Key] = change.Value
+	for  key in stateChange:
+		state[key] = stateChange[key]
 
 	return state;
