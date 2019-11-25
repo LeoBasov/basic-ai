@@ -14,5 +14,3 @@ func update(object):
 	
 	if data_provider.move_agent(action):
 		emit_signal("pop")
-	else:
-		pass
