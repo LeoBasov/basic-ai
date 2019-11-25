@@ -1,9 +1,7 @@
 extends "res://scenes/AI/FiniteState.gd"
 
-var data_provider : IGoap
-
 func update(object) -> void:
-	data_provider = object.get_node("GoapAgent/IGoap")
+	var data_provider = object.get_node("GoapAgent/IGoap")
 	
 	# get the world state and the goal we want to plan for
 	var world_state = data_provider.get_world_state()
