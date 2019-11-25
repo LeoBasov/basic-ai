@@ -111,8 +111,18 @@ Check that all items in 'test' are in 'state'. If just one does not match or is 
 then this returns false.
 """
 func in_state(test : Dictionary, state : Dictionary) -> bool:
-	#FILL IN FUNCTION
-	return false
+	var allMatch : bool = true
+	for  t in test:
+		var mmatch : bool = false
+		for  s in state:
+			if s.Equals(t):
+				mmatch = true
+				break
+
+		if !mmatch:
+			allMatch = false;
+
+	return allMatch
 	
 """
 Apply the stateChange to the currentState
