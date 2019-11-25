@@ -32,3 +32,6 @@ func remove_action(action : GoapAction) -> void:
 
 func has_action_plan() -> bool:
 	return current_actions.size() > 0
+
+func _on_MoveState_get_current_action():
+	$FiniteStateMachine/MoveState.set_current_action(current_actions.back())
