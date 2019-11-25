@@ -6,8 +6,6 @@ class_name IGoap
  * Collect the world data for this Agent that will be
  * used for GOAP planning.
 """
-#using System.Collections.Generic;
-
 
 """
  * Any agent that wants to use GOAP must implement
@@ -46,7 +44,7 @@ func plan_failed(failed_goal : Dictionary) -> void:
 	 * A plan was found for the supplied goal.
 	 * These are the actions the Agent will perform, in order.
 """
-func planFound(goal : Dictionary, actions : Array) -> void: #(HashSet<KeyValuePair<string,object>> goal, Queue<GoapAction> actions)
+func plan_found(goal : Dictionary, actions : Array) -> void: #(HashSet<KeyValuePair<string,object>> goal, Queue<GoapAction> actions)
 	#OVERRIDE THIS
 	pass
 
